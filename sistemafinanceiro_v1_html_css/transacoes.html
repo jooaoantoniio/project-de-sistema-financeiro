@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transações - Meu Financeiro</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  <header class="cabecalho">
+    <span class="cabecalho__logo">Meu Financeiro</span>
+
+    <nav class="navegacao">
+      <a class="navegacao__link" href="dashboard.html">Dashboard</a>
+      <a class="navegacao__link navegacao__link--ativo" href="transacoes.html">Transações</a>
+      <a class="navegacao__link" href="nova-transacao.html">Nova Transação</a>
+    </nav>
+
+    <div class="cabecalho__usuario">
+      <img
+        class="cabecalho__avatar"
+        src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect width='64' height='64' rx='32' fill='%232563eb'/%3E%3Ctext x='32' y='40' font-size='24' fill='white' text-anchor='middle' font-family='Arial'%3EAS%3C/text%3E%3C/svg%3E"
+        alt="Foto de perfil de Ana Souza">
+      <span class="cabecalho__nome-usuario">Ana Souza</span>
+    </div>
+  </header>
+
+  <main class="conteudo-principal">
+    <h1 class="titulo-pagina">Transações</h1>
+
+    <form class="barra-filtros" action="#" method="get">
+
+      <div class="campo">
+        <label class="campo__rotulo" for="busca">Buscar</label>
+        <input
+          class="campo__entrada"
+          type="text"
+          id="busca"
+          name="busca"
+          placeholder="Buscar por descrição">
+      </div>
+
+      <div class="campo">
+        <label class="campo__rotulo" for="periodo">Período</label>
+        <select class="campo__entrada" id="periodo" name="periodo">
+          <option value="">Este mês</option>
+          <option value="anterior">Mês anterior</option>
+          <option value="ano">Este ano</option>
+          <option value="personalizado">Personalizado</option>
+        </select>
+      </div>
+
+      <div class="campo">
+        <label class="campo__rotulo" for="categoria">Categoria</label>
+        <select class="campo__entrada" id="categoria" name="categoria">
+          <option value="">Todas</option>
+          <option value="alimentacao">Alimentação</option>
+          <option value="transporte">Transporte</option>
+          <option value="moradia">Moradia</option>
+          <option value="lazer">Lazer</option>
+          <option value="salario">Salário</option>
+        </select>
+      </div>
+
+      <div class="campo">
+        <label class="campo__rotulo" for="conta">Conta</label>
+        <select class="campo__entrada" id="conta" name="conta">
+          <option value="">Todas</option>
+          <option value="corrente">Conta Corrente</option>
+          <option value="cartao">Cartão</option>
+          <option value="dinheiro">Dinheiro</option>
+        </select>
+      </div>
+
+      <div class="campo">
+        <label class="campo__rotulo" for="tipo">Tipo</label>
+        <select class="campo__entrada" id="tipo" name="tipo">
+          <option value="">Todos</option>
+          <option value="entrada">Entrada</option>
+          <option value="saida">Saída</option>
+        </select>
+      </div>
+
+    </form>
+
+    <ul class="lista-transacoes">
+
+      <li class="transacao">
+        <div class="transacao__info">
+          <p class="transacao__descricao">Supermercado Extra</p>
+          <p class="transacao__detalhes">Alimentação · Conta Corrente</p>
+        </div>
+        <p class="transacao__data">05/09/2026</p>
+        <p class="transacao__valor transacao__valor--saida">- R$ 342,80</p>
+        <div class="transacao__acoes">
+          <button class="transacao__botao-acao" type="button">Editar</button>
+          <button class="transacao__botao-acao" type="button">Excluir</button>
+        </div>
+      </li>
+
+      <li class="transacao">
+        <div class="transacao__info">
+          <p class="transacao__descricao">Salário</p>
+          <p class="transacao__detalhes">Salário · Conta Corrente</p>
+        </div>
+        <p class="transacao__data">01/09/2026</p>
+        <p class="transacao__valor transacao__valor--entrada">+ R$ 6.400,00</p>
+        <div class="transacao__acoes">
+          <button class="transacao__botao-acao" type="button">Editar</button>
+          <button class="transacao__botao-acao" type="button">Excluir</button>
+        </div>
+      </li>
+
+      <li class="transacao">
+        <div class="transacao__info">
+          <p class="transacao__descricao">Uber para o trabalho</p>
+          <p class="transacao__detalhes">Transporte · Cartão</p>
+        </div>
+        <p class="transacao__data">03/09/2026</p>
+        <p class="transacao__valor transacao__valor--saida">- R$ 28,50</p>
+        <div class="transacao__acoes">
+          <button class="transacao__botao-acao" type="button">Editar</button>
+          <button class="transacao__botao-acao" type="button">Excluir</button>
+        </div>
+      </li>
+
+      <li class="transacao">
+        <div class="transacao__info">
+          <p class="transacao__descricao">Aluguel</p>
+          <p class="transacao__detalhes">Moradia · Conta Corrente</p>
+        </div>
+        <p class="transacao__data">05/09/2026</p>
+        <p class="transacao__valor transacao__valor--saida">- R$ 1.800,00</p>
+        <div class="transacao__acoes">
+          <button class="transacao__botao-acao" type="button">Editar</button>
+          <button class="transacao__botao-acao" type="button">Excluir</button>
+        </div>
+      </li>
+
+      <li class="transacao">
+        <div class="transacao__info">
+          <p class="transacao__descricao">Cinema com amigos</p>
+          <p class="transacao__detalhes">Lazer · Dinheiro</p>
+        </div>
+        <p class="transacao__data">07/09/2026</p>
+        <p class="transacao__valor transacao__valor--saida">- R$ 65,00</p>
+        <div class="transacao__acoes">
+          <button class="transacao__botao-acao" type="button">Editar</button>
+          <button class="transacao__botao-acao" type="button">Excluir</button>
+        </div>
+      </li>
+
+      <li class="transacao">
+        <div class="transacao__info">
+          <p class="transacao__descricao">Freelance design</p>
+          <p class="transacao__detalhes">Salário · Conta Corrente</p>
+        </div>
+        <p class="transacao__data">10/09/2026</p>
+        <p class="transacao__valor transacao__valor--entrada">+ R$ 850,00</p>
+        <div class="transacao__acoes">
+          <button class="transacao__botao-acao" type="button">Editar</button>
+          <button class="transacao__botao-acao" type="button">Excluir</button>
+        </div>
+      </li>
+
+      <li class="transacao">
+        <div class="transacao__info">
+          <p class="transacao__descricao">Conta de luz</p>
+          <p class="transacao__detalhes">Moradia · Conta Corrente</p>
+        </div>
+        <p class="transacao__data">12/09/2026</p>
+        <p class="transacao__valor transacao__valor--saida">- R$ 214,37</p>
+        <div class="transacao__acoes">
+          <button class="transacao__botao-acao" type="button">Editar</button>
+          <button class="transacao__botao-acao" type="button">Excluir</button>
+        </div>
+      </li>
+
+      <li class="transacao">
+        <div class="transacao__info">
+          <p class="transacao__descricao">Farmácia</p>
+          <p class="transacao__detalhes">Saúde · Cartão</p>
+        </div>
+        <p class="transacao__data">13/09/2026</p>
+        <p class="transacao__valor transacao__valor--saida">- R$ 97,60</p>
+        <div class="transacao__acoes">
+          <button class="transacao__botao-acao" type="button">Editar</button>
+          <button class="transacao__botao-acao" type="button">Excluir</button>
+        </div>
+      </li>
+
+    </ul>
+
+  </main>
+
+  <footer class="rodape">
+    <p>&copy; 2026 Meu Financeiro. Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>

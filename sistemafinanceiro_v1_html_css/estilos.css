@@ -1,0 +1,468 @@
+/* ==========================================================================
+   MEU FINANCEIRO - Folha de estilos compartilhada
+   Este arquivo é usado por todas as páginas do app.
+   As seções abaixo estão organizadas para facilitar a leitura.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. VARIÁVEIS GLOBAIS (identidade visual)
+   Mude os valores aqui para trocar as cores e a fonte de todo o site.
+   -------------------------------------------------------------------------- */
+:root {
+  /* Cores principais */
+  --cor-primaria: #14304d;        /* azul-marinho: cabeçalho e títulos */
+  --cor-primaria-escura: #0c2036; /* variação mais escura da primária */
+  --cor-destaque: #2563eb;        /* azul vibrante: botões de ação principal */
+  --cor-destaque-hover: #1d4ed8;  /* estado hover do botão de destaque */
+
+  /* Cores de fundo e texto */
+  --cor-fundo: #f4f6f8;           /* fundo geral da página */
+  --cor-fundo-card: #ffffff;      /* fundo de cartões e caixas */
+  --cor-borda: #e0e4e8;           /* bordas suaves */
+  --cor-texto-principal: #1f2937; /* texto principal, quase preto */
+  --cor-texto-secundario: #6b7280;/* texto secundário, cinza médio */
+
+  /* Cores de valores financeiros */
+  --cor-entrada: #15803d;   /* verde: receitas / entradas */
+  --cor-saida: #b91c1c;     /* vermelho: despesas / saídas */
+
+  /* Tipografia */
+  --fonte-principal: "Segoe UI", Roboto, Arial, sans-serif;
+
+  /* Espaçamentos e bordas reutilizáveis */
+  --raio-borda: 8px;
+  --sombra-card: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET BÁSICO
+   Remove estilos padrão do navegador para começar do zero.
+   -------------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--fonte-principal);
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto-principal);
+  line-height: 1.5;
+}
+
+a {
+  color: var(--cor-destaque);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   3. CABEÇALHO E NAVEGAÇÃO
+   Cabeçalho compartilhado pelas páginas internas (dashboard, transações,
+   nova transação). A página de login usa uma variação simplificada.
+   -------------------------------------------------------------------------- */
+.cabecalho {
+  background-color: var(--cor-primaria);
+  color: #ffffff;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.cabecalho__logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.navegacao {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.navegacao__link {
+  color: #dbe4ee;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.navegacao__link:hover,
+.navegacao__link--ativo {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.cabecalho__usuario {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.cabecalho__avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+}
+
+.cabecalho__nome-usuario {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+
+/* Cabeçalho simplificado usado apenas na página de login */
+.cabecalho-login {
+  background-color: var(--cor-primaria);
+  color: #ffffff;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.cabecalho-login__logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   4. ESTRUTURA GERAL DE PÁGINA
+   -------------------------------------------------------------------------- */
+.conteudo-principal {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.conteudo-principal--centralizado {
+  max-width: 420px;
+  padding-top: 4rem;
+}
+
+.titulo-pagina {
+  font-size: 1.8rem;
+  color: var(--cor-primaria);
+  margin-bottom: 1.5rem;
+}
+
+.secao {
+  margin-bottom: 2.5rem;
+}
+
+.secao__titulo {
+  font-size: 1.2rem;
+  color: var(--cor-primaria);
+  margin-bottom: 1rem;
+}
+
+.rodape {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--cor-texto-secundario);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--cor-borda);
+}
+
+/* --------------------------------------------------------------------------
+   5. FORMULÁRIOS
+   Usado nas páginas de login e nova transação.
+   -------------------------------------------------------------------------- */
+.formulario {
+  background-color: var(--cor-fundo-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-borda);
+  box-shadow: var(--sombra-card);
+  padding: 2rem;
+}
+
+.campo {
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.campo__rotulo {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--cor-texto-principal);
+}
+
+.campo__entrada {
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-borda);
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--cor-texto-principal);
+  background-color: #ffffff;
+}
+
+.campo__entrada:focus {
+  outline: 2px solid var(--cor-destaque);
+  outline-offset: 1px;
+}
+
+.campo-linha {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.campo-linha .campo {
+  flex: 1;
+  min-width: 160px;
+}
+
+/* --------------------------------------------------------------------------
+   6. BOTÕES
+   -------------------------------------------------------------------------- */
+.botao {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--raio-borda);
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: center;
+}
+
+.botao--destaque {
+  background-color: var(--cor-destaque);
+  color: #ffffff;
+  width: 100%;
+}
+
+.botao--destaque:hover {
+  background-color: var(--cor-destaque-hover);
+}
+
+.botao--secundario {
+  background-color: transparent;
+  color: var(--cor-texto-secundario);
+  border: 1px solid var(--cor-borda);
+}
+
+.botao--secundario:hover {
+  background-color: var(--cor-fundo);
+}
+
+.links-auxiliares {
+  margin-top: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+}
+
+.acoes-formulario {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.acoes-formulario .botao--destaque {
+  width: auto;
+  flex: 1;
+}
+
+/* --------------------------------------------------------------------------
+   7. CARDS DE SALDO (dashboard)
+   -------------------------------------------------------------------------- */
+.grade-cartoes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+}
+
+.cartao-conta {
+  background-color: var(--cor-fundo-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-borda);
+  box-shadow: var(--sombra-card);
+  padding: 1.5rem;
+}
+
+.cartao-conta__nome {
+  font-size: 0.95rem;
+  color: var(--cor-texto-secundario);
+  margin-bottom: 0.5rem;
+}
+
+.cartao-conta__saldo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--cor-primaria);
+}
+
+/* --------------------------------------------------------------------------
+   8. RESUMO DO MÊS
+   -------------------------------------------------------------------------- */
+.resumo-mes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+}
+
+.resumo-mes__bloco {
+  background-color: var(--cor-fundo-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-borda);
+  box-shadow: var(--sombra-card);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.resumo-mes__rotulo {
+  font-size: 0.95rem;
+  color: var(--cor-texto-secundario);
+  margin-bottom: 0.5rem;
+}
+
+.resumo-mes__valor {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.resumo-mes__valor--entrada {
+  color: var(--cor-entrada);
+}
+
+.resumo-mes__valor--saida {
+  color: var(--cor-saida);
+}
+
+/* --------------------------------------------------------------------------
+   9. ESPAÇOS RESERVADOS PARA GRÁFICOS
+   Sem JavaScript, então usamos blocos com texto explicativo no lugar.
+   -------------------------------------------------------------------------- */
+.placeholder-grafico {
+  background-color: var(--cor-fundo-card);
+  border: 1px dashed var(--cor-borda);
+  border-radius: var(--raio-borda);
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cor-texto-secundario);
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   10. BARRA DE FILTROS (transações)
+   -------------------------------------------------------------------------- */
+.barra-filtros {
+  background-color: var(--cor-fundo-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-borda);
+  box-shadow: var(--sombra-card);
+  padding: 1.2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.barra-filtros .campo {
+  margin-bottom: 0;
+  min-width: 160px;
+  flex: 1;
+}
+
+/* --------------------------------------------------------------------------
+   11. LISTA DE TRANSAÇÕES
+   -------------------------------------------------------------------------- */
+.lista-transacoes {
+  list-style: none;
+  background-color: var(--cor-fundo-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-borda);
+  box-shadow: var(--sombra-card);
+  overflow: hidden;
+}
+
+.transacao {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--cor-borda);
+  flex-wrap: wrap;
+}
+
+.transacao:last-child {
+  border-bottom: none;
+}
+
+.transacao__info {
+  flex: 2;
+  min-width: 180px;
+}
+
+.transacao__descricao {
+  font-weight: 600;
+  color: var(--cor-texto-principal);
+}
+
+.transacao__detalhes {
+  font-size: 0.85rem;
+  color: var(--cor-texto-secundario);
+}
+
+.transacao__data {
+  flex: 1;
+  min-width: 100px;
+  font-size: 0.9rem;
+  color: var(--cor-texto-secundario);
+}
+
+.transacao__valor {
+  flex: 1;
+  min-width: 120px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-align: right;
+}
+
+.transacao__valor--entrada {
+  color: var(--cor-entrada);
+}
+
+.transacao__valor--saida {
+  color: var(--cor-saida);
+}
+
+.transacao__acoes {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.transacao__botao-acao {
+  background: none;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-borda);
+  padding: 0.4rem 0.7rem;
+  font-size: 0.85rem;
+  font-family: inherit;
+  cursor: pointer;
+  color: var(--cor-texto-secundario);
+}
+
+.transacao__botao-acao:hover {
+  background-color: var(--cor-fundo);
+}

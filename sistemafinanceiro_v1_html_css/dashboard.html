@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Meu Financeiro</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  <header class="cabecalho">
+    <span class="cabecalho__logo">Meu Financeiro</span>
+
+    <nav class="navegacao">
+      <a class="navegacao__link navegacao__link--ativo" href="dashboard.html">Dashboard</a>
+      <a class="navegacao__link" href="transacoes.html">Transações</a>
+      <a class="navegacao__link" href="nova-transacao.html">Nova Transação</a>
+    </nav>
+
+    <div class="cabecalho__usuario">
+      <img
+        class="cabecalho__avatar"
+        src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect width='64' height='64' rx='32' fill='%232563eb'/%3E%3Ctext x='32' y='40' font-size='24' fill='white' text-anchor='middle' font-family='Arial'%3EAS%3C/text%3E%3C/svg%3E"
+        alt="Foto de perfil de Ana Souza">
+      <span class="cabecalho__nome-usuario">Ana Souza</span>
+    </div>
+  </header>
+
+  <main class="conteudo-principal">
+    <h1 class="titulo-pagina">Meu Painel</h1>
+
+    <section class="secao">
+      <h2 class="secao__titulo">Saldos</h2>
+      <div class="grade-cartoes">
+
+        <div class="cartao-conta">
+          <p class="cartao-conta__nome">Conta Corrente</p>
+          <p class="cartao-conta__saldo">R$ 3.842,17</p>
+        </div>
+
+        <div class="cartao-conta">
+          <p class="cartao-conta__nome">Cartão</p>
+          <p class="cartao-conta__saldo">R$ 1.250,90</p>
+        </div>
+
+        <div class="cartao-conta">
+          <p class="cartao-conta__nome">Dinheiro</p>
+          <p class="cartao-conta__saldo">R$ 180,00</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="secao">
+      <h2 class="secao__titulo">Resumo do mês</h2>
+      <div class="resumo-mes">
+
+        <div class="resumo-mes__bloco">
+          <p class="resumo-mes__rotulo">Entradas do mês</p>
+          <p class="resumo-mes__valor resumo-mes__valor--entrada">R$ 6.400,00</p>
+        </div>
+
+        <div class="resumo-mes__bloco">
+          <p class="resumo-mes__rotulo">Saídas do mês</p>
+          <p class="resumo-mes__valor resumo-mes__valor--saida">R$ 4.128,52</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="secao">
+      <h2 class="secao__titulo">Gastos por categoria</h2>
+      <div class="placeholder-grafico">
+        Gráfico de pizza por categoria
+      </div>
+    </section>
+
+    <section class="secao">
+      <h2 class="secao__titulo">Evolução mensal</h2>
+      <div class="placeholder-grafico">
+        Gráfico de linha de evolução
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="rodape">
+    <p>&copy; 2026 Meu Financeiro. Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>
