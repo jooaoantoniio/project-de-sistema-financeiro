@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Descoberta Guiada - Meu Financeiro</title>
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="descoberta-guiada.css">
+</head>
+<body>
+
+  <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="cabecalho">
+    <span class="cabecalho__logo">Meu Financeiro</span>
+
+    <nav class="navegacao">
+      <a class="navegacao__link" href="dashboard.html">Dashboard</a>
+      <a class="navegacao__link" href="transacoes.html">Transações</a>
+      <a class="navegacao__link" href="nova-transacao.html">Nova Transação</a>
+      <a class="navegacao__link navegacao__link--ativo" href="descoberta-guiada.html" aria-current="page">Descoberta Guiada</a>
+    </nav>
+
+    <div class="cabecalho__usuario">
+      <img
+        class="cabecalho__avatar"
+        src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect width='64' height='64' rx='32' fill='%232563eb'/%3E%3Ctext x='32' y='40' font-size='24' fill='white' text-anchor='middle' font-family='Arial'%3EJA%3C/text%3E%3C/svg%3E"
+        alt="Foto de perfil de João Antonio">
+      <span class="cabecalho__nome-usuario">João Antonio</span>
+    </div>
+  </header>
+
+  <main class="conteudo-principal conteudo-principal--largo atividade" id="conteudo" tabindex="-1">
+
+    <div class="atividade__topo">
+      <a class="atividade__voltar" href="dashboard.html">
+        <span aria-hidden="true">←</span> Voltar ao Dashboard
+      </a>
+      <button class="botao botao--secundario botao--pequeno" type="button" id="reiniciar">
+        Reiniciar atividade
+      </button>
+    </div>
+
+    <header class="atividade__cabecalho">
+      <span class="selo">Descoberta guiada</span>
+      <h1 class="atividade__titulo">Diagnosticar e corrigir o dashboard</h1>
+      <p class="atividade__intro">
+        Vamos olhar o dashboard juntos, diagnosticar a hierarquia e, para cada problema,
+        formular o pedido que dirige a IA.
+      </p>
+    </header>
+
+    <!-- PROGRESSO -->
+    <div class="progresso">
+      <div class="progresso__topo">
+        <p class="progresso__etapa" id="progresso-etapa">Etapa 1 de 5</p>
+        <p class="progresso__concluidas" id="progresso-concluidas">0 de 5 concluídas</p>
+      </div>
+      <div
+        class="progresso__barra"
+        role="progressbar"
+        aria-label="Progresso da atividade"
+        aria-valuemin="0"
+        aria-valuemax="5"
+        aria-valuenow="0"
+        id="progresso-barra">
+        <span class="progresso__preenchimento" id="progresso-preenchimento"></span>
+      </div>
+      <ol class="passos" aria-label="Etapas da atividade">
+        <li><button class="passo" type="button" data-ir-etapa="1"><span class="passo__numero">01</span> <span class="passo__nome">Teste</span></button></li>
+        <li><button class="passo" type="button" data-ir-etapa="2"><span class="passo__numero">02</span> <span class="passo__nome">Concorrente</span></button></li>
+        <li><button class="passo" type="button" data-ir-etapa="3"><span class="passo__numero">03</span> <span class="passo__nome">Alavanca</span></button></li>
+        <li><button class="passo" type="button" data-ir-etapa="4"><span class="passo__numero">04</span> <span class="passo__nome">Prompt</span></button></li>
+        <li><button class="passo" type="button" data-ir-etapa="5"><span class="passo__numero">05</span> <span class="passo__nome">Validação</span></button></li>
+      </ol>
+    </div>
+
+    <div class="estudio">
+      <div class="estudio__etapas">
+
+        <!-- 01 - TESTE DOS 3 SEGUNDOS -->
+        <section class="etapa" data-etapa="1" aria-labelledby="etapa-1-titulo" hidden>
+          <p class="etapa__contador">Etapa 01</p>
+          <h2 class="etapa__titulo" id="etapa-1-titulo">Teste dos 3 segundos</h2>
+          <p class="etapa__texto">
+            O olho encontra o saldo com facilidade?<br>
+            Para onde ele vai primeiro?
+          </p>
+
+          <div class="teste">
+            <button class="botao botao--acao" type="button" id="iniciar-teste">Iniciar teste de 3 segundos</button>
+            <p class="teste__ajuda">A prévia fica visível por 3 segundos e depois é coberta. Responda com a primeira impressão.</p>
+          </div>
+
+          <fieldset class="pergunta">
+            <legend class="pergunta__legenda">Para onde seu olhar foi primeiro?</legend>
+            <div class="opcoes" data-opcoes="olhar" data-campo="olhar"></div>
+          </fieldset>
+
+          <fieldset class="pergunta">
+            <legend class="pergunta__legenda">O saldo principal está recebendo a atenção que deveria?</legend>
+            <div class="opcoes opcoes--linha" data-opcoes="atencao" data-campo="atencao"></div>
+          </fieldset>
+
+          <div class="feedback" id="feedback-1" role="status" aria-live="polite"></div>
+        </section>
+
+        <!-- 02 - IDENTIFIQUE O CONCORRENTE -->
+        <section class="etapa" data-etapa="2" aria-labelledby="etapa-2-titulo" hidden>
+          <p class="etapa__contador">Etapa 02</p>
+          <h2 class="etapa__titulo" id="etapa-2-titulo">Identifique o concorrente</h2>
+          <p class="etapa__texto">Alguma informação secundária está competindo demais com o saldo?</p>
+
+          <fieldset class="pergunta">
+            <legend class="pergunta__legenda">Qual elemento está competindo mais com o saldo?</legend>
+            <div class="opcoes" data-opcoes="concorrente" data-campo="concorrente"></div>
+          </fieldset>
+
+          <div class="feedback" id="feedback-2" role="status" aria-live="polite"></div>
+        </section>
+
+        <!-- 03 - ESCOLHA A ALAVANCA -->
+        <section class="etapa" data-etapa="3" aria-labelledby="etapa-3-titulo" hidden>
+          <p class="etapa__contador">Etapa 03</p>
+          <h2 class="etapa__titulo" id="etapa-3-titulo">Escolha a alavanca</h2>
+          <p class="etapa__texto">Das quatro (tamanho, cor, espaço, posição), qual está faltando?</p>
+
+          <fieldset class="pergunta">
+            <legend class="pergunta__legenda">Qual dessas alavancas você usaria para destacar o saldo?</legend>
+            <p class="pergunta__ajuda">Você pode escolher mais de uma.</p>
+            <div class="alavancas" data-opcoes="alavancas" data-campo="alavancas"></div>
+          </fieldset>
+
+          <div class="feedback" id="feedback-3" role="status" aria-live="polite"></div>
+        </section>
+
+        <!-- 04 - ESCREVA O PROMPT -->
+        <section class="etapa" data-etapa="4" aria-labelledby="etapa-4-titulo" hidden>
+          <p class="etapa__contador">Etapa 04</p>
+          <h2 class="etapa__titulo" id="etapa-4-titulo">Escreva o prompt</h2>
+          <p class="etapa__texto">Transforme o diagnóstico num pedido claro. Vamos escrever juntos.</p>
+
+          <dl class="resumo-diagnostico" aria-label="Resumo do seu diagnóstico">
+            <div class="resumo-diagnostico__item">
+              <dt>Olhar foi primeiro para</dt>
+              <dd id="resumo-olhar">—</dd>
+            </div>
+            <div class="resumo-diagnostico__item">
+              <dt>Concorrente</dt>
+              <dd id="resumo-concorrente">—</dd>
+            </div>
+            <div class="resumo-diagnostico__item">
+              <dt>Alavanca</dt>
+              <dd id="resumo-alavanca">—</dd>
+            </div>
+          </dl>
+
+          <div class="campo">
+            <label class="campo__rotulo" for="campo-prompt">Seu prompt para a IA</label>
+            <textarea
+              class="campo__entrada prompt__campo"
+              id="campo-prompt"
+              name="prompt"
+              rows="6"
+              aria-describedby="prompt-ajuda"></textarea>
+            <p class="prompt__ajuda" id="prompt-ajuda">
+              Geramos uma sugestão a partir das suas respostas. Edite à vontade antes de aplicar.
+            </p>
+          </div>
+
+          <div class="prompt__acoes">
+            <button class="botao botao--secundario" type="button" id="gerar-sugestao">Gerar sugestão novamente</button>
+            <button class="botao botao--acao" type="button" id="aplicar-prompt">Aplicar prompt</button>
+          </div>
+
+          <div class="feedback" id="feedback-4" role="status" aria-live="polite"></div>
+        </section>
+
+        <!-- 05 - VALIDE O RESULTADO -->
+        <section class="etapa" data-etapa="5" aria-labelledby="etapa-5-titulo" hidden>
+          <p class="etapa__contador">Etapa 05</p>
+          <h2 class="etapa__titulo" id="etapa-5-titulo">Valide o resultado</h2>
+          <p class="etapa__texto">
+            A IA aplicou. Compare o antes e o depois na prévia e responda com a primeira impressão.
+          </p>
+
+          <div class="alteracoes" id="alteracoes"></div>
+
+          <fieldset class="pergunta">
+            <legend class="pergunta__legenda">Agora, para onde seu olho vai primeiro?</legend>
+            <div class="opcoes" data-opcoes="olharDepois" data-campo="olharDepois"></div>
+          </fieldset>
+
+          <fieldset class="pergunta">
+            <legend class="pergunta__legenda">A hierarquia melhorou?</legend>
+            <div class="opcoes opcoes--coluna" data-opcoes="melhorou" data-campo="melhorou"></div>
+          </fieldset>
+
+          <div class="feedback" id="feedback-5" role="status" aria-live="polite"></div>
+        </section>
+
+        <div class="navegacao-etapas">
+          <button class="botao botao--secundario" type="button" id="etapa-voltar">
+            <span aria-hidden="true">←</span> Voltar
+          </button>
+          <button class="botao botao--acao" type="button" id="etapa-continuar" aria-describedby="continuar-dica">
+            Continuar <span aria-hidden="true">→</span>
+          </button>
+          <a class="botao botao--sucesso" href="dashboard.html" id="ver-dashboard" hidden>
+            Ver no Dashboard <span aria-hidden="true">→</span>
+          </a>
+          <p class="navegacao-etapas__dica" id="continuar-dica"></p>
+        </div>
+      </div>
+
+      <!-- PRÉVIA DO DASHBOARD -->
+      <aside class="previa" aria-labelledby="previa-titulo">
+        <div class="previa__barra">
+          <h2 class="previa__titulo" id="previa-titulo">Seu dashboard</h2>
+          <div class="segmentado" role="group" aria-label="Versão exibida na prévia">
+            <button class="segmentado__botao" type="button" data-modo="antes" aria-pressed="true">Antes</button>
+            <button class="segmentado__botao" type="button" data-modo="depois" aria-pressed="false">Depois</button>
+            <button class="segmentado__botao" type="button" data-modo="comparar" aria-pressed="false">Antes x Depois</button>
+          </div>
+        </div>
+
+        <div class="previa__palco" id="previa-palco" data-modo="antes">
+          <div class="previa__quadro" data-versao="antes">
+            <span class="previa__rotulo">Antes</span>
+          </div>
+          <div class="previa__quadro" data-versao="depois">
+            <span class="previa__rotulo previa__rotulo--depois">Depois</span>
+          </div>
+
+          <div class="previa__cortina" id="previa-cortina" hidden>
+            <p class="previa__cortina-texto">Tempo esgotado! Para onde seu olhar foi primeiro?</p>
+          </div>
+          <div class="previa__contador" id="previa-contador" aria-hidden="true" hidden></div>
+        </div>
+
+        <p class="previa__legenda">
+          Mesma marcação e estilos do <a href="dashboard.html">Dashboard</a>. O prompt aplicado aqui
+          também muda o dashboard real.
+        </p>
+      </aside>
+    </div>
+
+    <div class="visualmente-oculto" id="anuncio" aria-live="polite"></div>
+  </main>
+
+  <footer class="rodape">
+    <p>&copy; 2026 Meu Financeiro. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Modelo da prévia: mesma marcação e classes do dashboard.html -->
+  <template id="modelo-painel">
+    <div class="painel previa__painel">
+      <p class="titulo-pagina previa__titulo-pagina" data-elemento="titulo">Meu Painel</p>
+      <section class="secao">
+        <h3 class="secao__titulo">Saldos</h3>
+        <div class="grade-cartoes">
+          <div class="cartao-conta cartao-conta--principal" data-elemento="conta-corrente">
+            <p class="cartao-conta__nome">Conta Corrente</p>
+            <p class="cartao-conta__saldo">R$ 3.842,17</p>
+          </div>
+          <div class="cartao-conta" data-elemento="cartao">
+            <p class="cartao-conta__nome">Cartão</p>
+            <p class="cartao-conta__saldo">R$ 1.250,90</p>
+          </div>
+          <div class="cartao-conta" data-elemento="dinheiro">
+            <p class="cartao-conta__nome">Dinheiro</p>
+            <p class="cartao-conta__saldo">R$ 180,00</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="secao">
+        <h3 class="secao__titulo">Resumo do mês</h3>
+        <div class="resumo-mes">
+          <div class="resumo-mes__bloco" data-elemento="entradas">
+            <p class="resumo-mes__rotulo">Entradas do mês</p>
+            <p class="resumo-mes__valor resumo-mes__valor--entrada">R$ 6.400,00</p>
+          </div>
+          <div class="resumo-mes__bloco" data-elemento="saidas">
+            <p class="resumo-mes__rotulo">Saídas do mês</p>
+            <p class="resumo-mes__valor resumo-mes__valor--saida">R$ 4.128,52</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </template>
+
+  <script src="estado-atividade.js"></script>
+  <script src="servico-ia.js"></script>
+  <script src="descoberta-guiada.js"></script>
+</body>
+</html>

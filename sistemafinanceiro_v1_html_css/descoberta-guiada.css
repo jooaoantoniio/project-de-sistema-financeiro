@@ -1,0 +1,1106 @@
+/* ==========================================================================
+   MEU FINANCEIRO - Descoberta Guiada
+   Estilos exclusivos da atividade. Reaproveita as variáveis, o cabeçalho,
+   os botões, os campos e os cards de estilos.css.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. VARIÁVEIS DA ATIVIDADE
+   -------------------------------------------------------------------------- */
+:root {
+  --atv-laranja: #c2410c;          /* selos, números e destaques */
+  --atv-laranja-escuro: #9a3412;   /* títulos da atividade */
+  --atv-laranja-suave: #fff4ec;
+  --atv-laranja-borda: #fed7aa;
+
+  --atv-verde: #15803d;            /* sucesso */
+  --atv-verde-escuro: #14532d;
+  --atv-verde-suave: #f0fdf4;
+  --atv-verde-borda: #bbf7d0;
+
+  --atv-ambar: #92400e;
+  --atv-ambar-suave: #fffbeb;
+  --atv-ambar-borda: #fde68a;
+
+  --atv-azul-suave: #eef3f9;
+
+  --atv-raio: 16px;
+  --atv-raio-pequeno: 10px;
+  --atv-sombra: 0 1px 2px rgba(16, 24, 40, 0.05), 0 6px 20px rgba(16, 24, 40, 0.06);
+  --atv-sombra-hover: 0 2px 4px rgba(16, 24, 40, 0.06), 0 12px 28px rgba(16, 24, 40, 0.1);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. UTILITÁRIOS E BOTÕES COMPLEMENTARES
+   -------------------------------------------------------------------------- */
+.visualmente-oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.pular-conteudo {
+  position: absolute;
+  left: -9999px;
+  top: 0.75rem;
+  z-index: 10;
+  padding: 0.6rem 1rem;
+  border-radius: var(--raio-borda);
+  background-color: #ffffff;
+  color: var(--cor-primaria);
+  font-weight: 600;
+}
+
+.pular-conteudo:focus {
+  left: 0.75rem;
+}
+
+.conteudo-principal--largo {
+  max-width: 1280px;
+}
+
+.atividade:focus,
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
+.botao {
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+              box-shadow 0.2s ease, transform 0.1s ease;
+}
+
+.botao:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.botao:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+a.botao:hover {
+  text-decoration: none;
+}
+
+.botao--acao {
+  background-color: var(--cor-primaria);
+  color: #ffffff;
+}
+
+.botao--acao:hover:not(:disabled) {
+  background-color: var(--cor-primaria-escura);
+}
+
+.botao--sucesso {
+  background-color: var(--atv-verde);
+  color: #ffffff;
+}
+
+.botao--sucesso:hover {
+  background-color: var(--atv-verde-escuro);
+}
+
+.botao--secundario {
+  background-color: var(--cor-fundo-card);
+  color: var(--cor-primaria);
+}
+
+.botao--secundario:hover:not(:disabled) {
+  border-color: var(--cor-primaria);
+  background-color: var(--cor-fundo-card);
+}
+
+.botao--pequeno {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.88rem;
+}
+
+/* --------------------------------------------------------------------------
+   3. TOPO E CABEÇALHO DA ATIVIDADE
+   -------------------------------------------------------------------------- */
+.atividade__topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  margin-bottom: 2rem;
+}
+
+.atividade__voltar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--cor-primaria);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.atividade__cabecalho {
+  max-width: 760px;
+  margin-bottom: 2rem;
+  animation: surgir 0.4s ease both;
+}
+
+.selo {
+  display: inline-block;
+  margin-bottom: 0.9rem;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--atv-laranja-borda);
+  border-radius: 999px;
+  background-color: var(--atv-laranja-suave);
+  color: var(--atv-laranja);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.atividade__titulo {
+  margin-bottom: 0.85rem;
+  color: var(--atv-laranja-escuro);
+  font-size: clamp(1.75rem, 4vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.atividade__intro {
+  color: var(--cor-texto-secundario);
+  font-size: 1.08rem;
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   4. PROGRESSO E PASSOS
+   -------------------------------------------------------------------------- */
+.progresso {
+  margin-bottom: 2rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--atv-raio);
+  background-color: var(--cor-fundo-card);
+  box-shadow: var(--atv-sombra);
+}
+
+.progresso__topo {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.progresso__etapa {
+  color: var(--atv-laranja);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.progresso__concluidas {
+  color: var(--cor-texto-secundario);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.progresso__barra {
+  height: 6px;
+  margin-bottom: 1rem;
+  border-radius: 999px;
+  background-color: #e3e8ee;
+  overflow: hidden;
+}
+
+.progresso__preenchimento {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #16a34a, var(--atv-verde));
+  transition: width 0.45s ease;
+}
+
+.passos {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.passo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: 100%;
+  padding: 0.6rem 0.5rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: 999px;
+  background-color: var(--cor-fundo-card);
+  color: var(--cor-texto-secundario);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.passo:hover:not(:disabled) {
+  border-color: var(--cor-primaria);
+  color: var(--cor-primaria);
+}
+
+.passo:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.passo__numero {
+  font-weight: 800;
+}
+
+.passo--concluido {
+  border-color: var(--atv-verde-borda);
+  background-color: var(--atv-verde-suave);
+  color: var(--atv-verde-escuro);
+}
+
+.passo--concluido .passo__numero::before {
+  content: "✓ ";
+}
+
+.passo--atual,
+.passo--atual.passo--concluido {
+  border-color: var(--cor-primaria);
+  background-color: var(--cor-primaria);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(20, 48, 77, 0.2);
+}
+
+.passo--atual:hover:not(:disabled) {
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   5. ESTÚDIO: ETAPA + PRÉVIA
+   -------------------------------------------------------------------------- */
+.estudio {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.estudio__etapas {
+  min-width: 0;
+}
+
+.etapa {
+  padding: 2rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--atv-raio);
+  background-color: var(--cor-fundo-card);
+  box-shadow: var(--atv-sombra);
+  animation: surgir 0.35s ease both;
+}
+
+.etapa__contador {
+  margin-bottom: 0.35rem;
+  color: var(--atv-laranja);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.etapa__titulo {
+  margin-bottom: 0.6rem;
+  color: var(--atv-laranja-escuro);
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.etapa__texto {
+  margin-bottom: 1.5rem;
+  color: var(--cor-texto-secundario);
+  font-size: 1.02rem;
+}
+
+/* Teste dos 3 segundos */
+.teste {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1rem;
+  margin-bottom: 1.75rem;
+  padding: 1rem;
+  border-radius: var(--atv-raio-pequeno);
+  background-color: var(--atv-azul-suave);
+}
+
+.teste__ajuda {
+  flex: 1 1 220px;
+  color: var(--cor-texto-secundario);
+  font-size: 0.86rem;
+}
+
+/* Perguntas */
+.pergunta {
+  min-width: 0;
+  margin-bottom: 1.5rem;
+  border: none;
+}
+
+.pergunta__legenda {
+  margin-bottom: 0.7rem;
+  color: var(--cor-primaria);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.pergunta__ajuda {
+  margin: -0.35rem 0 0.7rem;
+  color: var(--cor-texto-secundario);
+  font-size: 0.86rem;
+}
+
+.opcoes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 0.55rem;
+}
+
+.opcoes--linha {
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+}
+
+.opcoes--coluna {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.opcao {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--atv-raio-pequeno);
+  background-color: var(--cor-fundo-card);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.opcao:hover {
+  border-color: var(--cor-primaria);
+}
+
+.opcao:has(.opcao__entrada:checked) {
+  border-color: var(--cor-primaria);
+  background-color: var(--atv-azul-suave);
+  box-shadow: 0 0 0 1px var(--cor-primaria);
+  font-weight: 600;
+}
+
+.opcao__entrada {
+  flex-shrink: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--cor-primaria);
+}
+
+/* Cards das alavancas */
+.alavancas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.alavanca {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.1rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--atv-raio-pequeno);
+  background-color: var(--cor-fundo-card);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease,
+              box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.alavanca:hover {
+  border-color: var(--atv-laranja);
+  transform: translateY(-1px);
+}
+
+.alavanca:has(.opcao__entrada:checked) {
+  border-color: var(--atv-laranja);
+  background-color: var(--atv-laranja-suave);
+  box-shadow: 0 0 0 1px var(--atv-laranja);
+}
+
+.alavanca .opcao__entrada {
+  margin-top: 0.15rem;
+  accent-color: var(--atv-laranja);
+}
+
+.alavanca__textos {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.alavanca__nome {
+  color: var(--cor-primaria);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.alavanca__descricao {
+  color: var(--cor-texto-secundario);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+/* --------------------------------------------------------------------------
+   6. FEEDBACK
+   -------------------------------------------------------------------------- */
+.feedback:empty,
+.alteracoes:empty {
+  display: none;
+}
+
+.feedback,
+.alteracoes {
+  margin-bottom: 1.5rem;
+}
+
+.feedback__caixa {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--cor-borda);
+  border-left-width: 4px;
+  border-radius: var(--atv-raio-pequeno);
+  font-size: 0.94rem;
+  animation: surgir 0.3s ease both;
+}
+
+.feedback__caixa .botao {
+  align-self: flex-start;
+  margin-top: 0.25rem;
+}
+
+.feedback__caixa--info {
+  border-color: #d5dfeb;
+  border-left-color: var(--cor-primaria);
+  background-color: #f6f9fc;
+}
+
+.feedback__caixa--sucesso {
+  border-color: var(--atv-verde-borda);
+  border-left-color: var(--atv-verde);
+  background-color: var(--atv-verde-suave);
+}
+
+.feedback__caixa--alerta {
+  border-color: var(--atv-ambar-borda);
+  border-left-color: #d97706;
+  background-color: var(--atv-ambar-suave);
+}
+
+.feedback__caixa--vitoria {
+  padding: 1.25rem 1.4rem;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  box-shadow: 0 8px 24px rgba(21, 128, 61, 0.12);
+}
+
+.feedback__caixa--vitoria .feedback__titulo {
+  font-size: 1.08rem;
+  line-height: 1.5;
+}
+
+.feedback__caixa--carregando {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.feedback__caixa--carregando::before {
+  content: "";
+  flex-shrink: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 2px solid #c8d3e0;
+  border-top-color: var(--cor-primaria);
+  border-radius: 50%;
+  animation: girar 0.8s linear infinite;
+}
+
+.feedback__titulo {
+  color: var(--cor-primaria);
+  font-weight: 700;
+}
+
+.feedback__caixa--sucesso .feedback__titulo {
+  color: var(--atv-verde-escuro);
+}
+
+.feedback__caixa--alerta .feedback__titulo {
+  color: var(--atv-ambar);
+}
+
+.feedback__destaque {
+  padding-top: 0.55rem;
+  border-top: 1px solid rgba(20, 48, 77, 0.12);
+  color: var(--cor-texto-principal);
+  font-weight: 600;
+}
+
+.explicacoes {
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.explicacoes__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: var(--cor-texto-secundario);
+  font-size: 0.9rem;
+}
+
+.explicacoes__nome {
+  color: var(--cor-primaria);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   7. ETAPA 04: RESUMO E PROMPT
+   -------------------------------------------------------------------------- */
+.resumo-diagnostico {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.resumo-diagnostico__item {
+  padding: 0.8rem 0.95rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--atv-raio-pequeno);
+  background-color: #f7f9fb;
+}
+
+.resumo-diagnostico dt {
+  margin-bottom: 0.2rem;
+  color: var(--cor-texto-secundario);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.resumo-diagnostico dd {
+  color: var(--cor-primaria);
+  font-weight: 700;
+}
+
+.prompt__campo {
+  min-height: 9.5rem;
+  resize: vertical;
+  line-height: 1.55;
+}
+
+.prompt__ajuda {
+  color: var(--cor-texto-secundario);
+  font-size: 0.84rem;
+}
+
+.prompt__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   8. ETAPA 05: O QUE MUDOU
+   -------------------------------------------------------------------------- */
+.alteracoes__bloco {
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--atv-raio-pequeno);
+  background-color: #f7f9fb;
+  animation: surgir 0.3s ease both;
+}
+
+.alteracoes__titulo {
+  margin-bottom: 0.5rem;
+  color: var(--cor-primaria);
+  font-weight: 700;
+}
+
+.alteracoes__lista {
+  list-style: none;
+  display: grid;
+  gap: 0.35rem;
+  color: var(--cor-texto-secundario);
+  font-size: 0.9rem;
+}
+
+.alteracoes__lista li {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.alteracoes__lista li::before {
+  content: "✓";
+  color: var(--atv-verde);
+  font-weight: 800;
+}
+
+/* --------------------------------------------------------------------------
+   9. NAVEGAÇÃO ENTRE ETAPAS
+   -------------------------------------------------------------------------- */
+.navegacao-etapas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.navegacao-etapas__dica {
+  width: 100%;
+  color: var(--cor-texto-secundario);
+  font-size: 0.84rem;
+  text-align: right;
+}
+
+.navegacao-etapas__dica:empty {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   10. PRÉVIA DO DASHBOARD (ANTES / DEPOIS)
+   -------------------------------------------------------------------------- */
+.previa {
+  position: sticky;
+  top: 1rem;
+  min-width: 0;
+  padding: 1.25rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--atv-raio);
+  background-color: var(--cor-fundo-card);
+  box-shadow: var(--atv-sombra);
+}
+
+.previa__barra {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.previa__titulo {
+  color: var(--cor-primaria);
+  font-size: 1.05rem;
+}
+
+.segmentado {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: 999px;
+  background-color: #eceff3;
+}
+
+.segmentado__botao {
+  padding: 0.38rem 0.85rem;
+  border: none;
+  border-radius: 999px;
+  background: none;
+  color: var(--cor-texto-secundario);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.segmentado__botao:hover:not(:disabled) {
+  color: var(--cor-primaria);
+}
+
+.segmentado__botao[aria-pressed="true"] {
+  background-color: #ffffff;
+  color: var(--cor-primaria);
+  box-shadow: 0 1px 3px rgba(16, 24, 40, 0.15);
+}
+
+.segmentado__botao:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.previa__palco {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  min-height: 300px;
+  padding: 1.25rem;
+  border-radius: var(--atv-raio-pequeno);
+  background-color: var(--cor-fundo);
+  overflow: hidden;
+}
+
+.previa__palco[data-modo="antes"] [data-versao="depois"],
+.previa__palco[data-modo="depois"] [data-versao="antes"] {
+  display: none;
+}
+
+.previa__palco[data-modo="comparar"] .previa__quadro + .previa__quadro {
+  padding-top: 1rem;
+  border-top: 1px dashed #cdd5df;
+}
+
+.previa__palco--atualizado {
+  animation: destacar-previa 0.9s ease;
+}
+
+.previa__quadro {
+  min-width: 0;
+  animation: surgir 0.3s ease both;
+}
+
+.previa__rotulo {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  background-color: #e1e6ec;
+  color: var(--cor-texto-secundario);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.previa__rotulo--depois {
+  background-color: var(--atv-verde-suave);
+  color: var(--atv-verde);
+}
+
+/* Ajustes de escala da prévia. :where() zera a especificidade para não vencer
+   os modificadores de hierarquia de estilos.css */
+:where(.previa__painel) .previa__titulo-pagina {
+  width: fit-content;
+  margin-bottom: 1rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+:where(.previa__painel) .grade-cartoes,
+:where(.previa__painel) .resumo-mes {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem;
+}
+
+:where(.previa__painel) .secao {
+  margin-bottom: 1.5rem;
+}
+
+:where(.previa__painel) .secao:last-child {
+  margin-bottom: 0;
+}
+
+:where(.previa__painel) .secao__titulo {
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+}
+
+:where(.previa__painel) .cartao-conta,
+:where(.previa__painel) .resumo-mes__bloco {
+  padding: 1.1rem;
+}
+
+/* Marcas na prévia: seu olhar, concorrente, principal */
+.previa [data-elemento] {
+  position: relative;
+  transition: box-shadow 0.15s ease;
+}
+
+.previa [data-marca] {
+  outline: 2px solid var(--cor-destaque);
+  outline-offset: 3px;
+}
+
+.previa [data-marca]::after {
+  content: attr(data-marca-rotulo);
+  position: absolute;
+  top: -0.7rem;
+  right: 0.6rem;
+  padding: 0.05rem 0.5rem;
+  border-radius: 999px;
+  background-color: var(--cor-destaque);
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  animation: surgir 0.25s ease both;
+}
+
+.previa [data-elemento="titulo"][data-marca]::after {
+  right: auto;
+  left: calc(100% + 0.5rem);
+  top: 0.35rem;
+}
+
+.previa [data-marca="concorrente"] {
+  outline: 2px dashed var(--atv-laranja);
+}
+
+.previa [data-marca="concorrente"]::after {
+  background-color: var(--atv-laranja);
+}
+
+.previa [data-marca="principal"] {
+  outline-color: var(--atv-verde);
+}
+
+.previa [data-marca="principal"]::after {
+  background-color: var(--atv-verde);
+}
+
+.previa .previa__alvo--foco {
+  box-shadow: 0 0 0 5px rgba(194, 65, 12, 0.25);
+}
+
+/* Cortina e contador do teste dos 3 segundos */
+.previa__cortina {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background-color: rgba(244, 246, 248, 0.97);
+  animation: aparecer 0.25s ease both;
+}
+
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .previa__cortina {
+    background-color: rgba(244, 246, 248, 0.9);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+  }
+}
+
+.previa__cortina-texto {
+  max-width: 300px;
+  color: var(--cor-primaria);
+  font-weight: 700;
+  text-align: center;
+}
+
+.previa__contador {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background-color: var(--atv-laranja);
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 800;
+  box-shadow: 0 4px 12px rgba(194, 65, 12, 0.35);
+}
+
+.previa__legenda {
+  margin-top: 0.85rem;
+  color: var(--cor-texto-secundario);
+  font-size: 0.82rem;
+}
+
+/* --------------------------------------------------------------------------
+   11. ANIMAÇÕES (discretas)
+   -------------------------------------------------------------------------- */
+@keyframes surgir {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes aparecer {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes girar {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes destacar-previa {
+  0% { box-shadow: 0 0 0 0 rgba(21, 128, 61, 0.45); }
+  100% { box-shadow: 0 0 0 14px rgba(21, 128, 61, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .feedback__caixa--carregando::before {
+    animation: girar 1.5s linear infinite !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   12. RESPONSIVIDADE
+   -------------------------------------------------------------------------- */
+@media (max-width: 1080px) {
+  .estudio {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* A prévia vem primeiro para o teste dos 3 segundos ficar à vista */
+  .previa {
+    position: static;
+    order: -1;
+  }
+}
+
+@media (max-width: 760px) {
+  .passos {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.35rem;
+  }
+
+  .passo {
+    flex-direction: column;
+    gap: 0.1rem;
+    padding: 0.5rem 0.25rem;
+    border-radius: var(--atv-raio-pequeno);
+    font-size: 0.72rem;
+  }
+
+  .passo__numero {
+    font-size: 0.95rem;
+  }
+
+  .passo--concluido .passo__numero::before {
+    content: none;
+  }
+
+  .resumo-diagnostico {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .atividade__intro {
+    font-size: 1rem;
+  }
+
+  .progresso,
+  .etapa,
+  .previa {
+    padding: 1.1rem;
+  }
+
+  .etapa__titulo {
+    font-size: 1.35rem;
+  }
+
+  .opcoes,
+  .opcoes--linha,
+  .alavancas {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .previa__palco {
+    padding: 0.85rem;
+    min-height: 240px;
+  }
+
+  .segmentado {
+    width: 100%;
+  }
+
+  .segmentado__botao {
+    flex: 1;
+    padding-inline: 0.4rem;
+  }
+
+  .teste .botao,
+  .prompt__acoes .botao,
+  .navegacao-etapas .botao {
+    width: 100%;
+  }
+
+  .prompt__acoes,
+  .navegacao-etapas {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .navegacao-etapas__dica {
+    text-align: center;
+  }
+
+  .feedback__caixa .botao {
+    align-self: stretch;
+  }
+}
+
+/* Em celulares, os passos mostram só o número (o nome está no título da etapa) */
+@media (max-width: 440px) {
+  .passo__nome {
+    display: none;
+  }
+
+  .passo {
+    padding: 0.55rem 0.25rem;
+  }
+}

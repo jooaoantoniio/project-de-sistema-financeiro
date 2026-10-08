@@ -65,6 +65,20 @@ img {
   max-width: 100%;
 }
 
+/* Foco visível para quem navega pelo teclado */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--cor-destaque);
+  outline-offset: 2px;
+}
+
+.cabecalho a:focus-visible {
+  outline-color: #ffffff;
+}
+
 /* --------------------------------------------------------------------------
    3. CABEÇALHO E NAVEGAÇÃO
    Cabeçalho compartilhado pelas páginas internas (dashboard, transações,
@@ -308,6 +322,80 @@ img {
   color: var(--cor-primaria);
 }
 
+/* Linha do título do dashboard com o atalho para a Descoberta Guiada */
+.titulo-linha {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.titulo-linha .titulo-pagina {
+  margin-bottom: 0;
+}
+
+.link-atividade {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.95rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: 999px;
+  background-color: var(--cor-fundo-card);
+  color: var(--cor-primaria);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.link-atividade:hover {
+  text-decoration: none;
+  border-color: var(--cor-primaria);
+  box-shadow: var(--sombra-card);
+}
+
+.link-atividade__icone {
+  color: #c2410c;
+}
+
+/* Aviso exibido quando o prompt da Descoberta Guiada foi aplicado */
+.aviso-painel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  padding: 0.85rem 1.1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #bbf7d0;
+  border-radius: var(--raio-borda);
+  background-color: #f0fdf4;
+  font-size: 0.92rem;
+}
+
+.aviso-painel[hidden] {
+  display: none;
+}
+
+.aviso-painel__texto {
+  color: #14532d;
+}
+
+.aviso-painel__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.aviso-painel .botao {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.88rem;
+  background-color: #ffffff;
+}
+
 /* --------------------------------------------------------------------------
    8. RESUMO DO MÊS
    -------------------------------------------------------------------------- */
@@ -465,4 +553,160 @@ img {
 
 .transacao__botao-acao:hover {
   background-color: var(--cor-fundo);
+}
+
+/* --------------------------------------------------------------------------
+   12. HIERARQUIA VISUAL MELHORADA (estado "depois" do painel)
+   Aplicado pela Descoberta Guiada ao dashboard real e à prévia da atividade.
+   O saldo principal ganha tamanho, peso, contraste e respiro; os
+   elementos secundários perdem peso para não competir com ele.
+   -------------------------------------------------------------------------- */
+.painel {
+  container-type: inline-size;
+  container-name: painel;
+}
+
+/* Transição só depois do primeiro desenho (o JS adiciona .painel--animado) */
+.painel--animado .cartao-conta,
+.painel--animado .resumo-mes__bloco,
+.painel--animado .cartao-conta__saldo,
+.painel--animado .resumo-mes__valor {
+  transition: background-color 0.35s ease, color 0.35s ease,
+              font-size 0.35s ease, padding 0.35s ease, box-shadow 0.35s ease;
+}
+
+.painel--hierarquia .secao:first-of-type {
+  margin-bottom: 3rem;
+}
+
+.painel--hierarquia .grade-cartoes {
+  grid-template-columns: minmax(0, 1.6fr) repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+/* Saldo principal: tamanho, peso, contraste e respiro */
+.painel--hierarquia .cartao-conta--principal {
+  padding: 1.75rem 2rem;
+  border-color: var(--cor-primaria);
+  background: linear-gradient(135deg, var(--cor-primaria) 0%, #1e4a75 100%);
+  box-shadow: 0 10px 28px rgba(20, 48, 77, 0.24);
+}
+
+.painel--hierarquia .cartao-conta--principal .cartao-conta__nome {
+  color: #c9d6e4;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.painel--hierarquia .cartao-conta--principal .cartao-conta__saldo {
+  color: #ffffff;
+  font-size: 2.25rem;
+  font-size: clamp(2rem, 5.5cqi, 2.9rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+/* Secundários: menos peso, menos contraste, agrupados */
+.painel--hierarquia .cartao-conta:not(.cartao-conta--principal),
+.painel--hierarquia .resumo-mes__bloco {
+  padding: 1rem 1.25rem;
+  background-color: #fafbfc;
+  box-shadow: none;
+}
+
+.painel--hierarquia .cartao-conta:not(.cartao-conta--principal) .cartao-conta__saldo {
+  color: #4b5563;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.painel--hierarquia .cartao-conta__nome,
+.painel--hierarquia .resumo-mes__rotulo {
+  font-size: 0.875rem;
+}
+
+.painel--hierarquia .resumo-mes {
+  gap: 0.9rem;
+}
+
+.painel--hierarquia .resumo-mes__bloco {
+  text-align: left;
+}
+
+.painel--hierarquia .resumo-mes__valor {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+/* Variação de POSIÇÃO: o saldo ocupa a linha inteira, no topo */
+.painel--hierarquia-posicao .grade-cartoes {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.painel--hierarquia-posicao .cartao-conta--principal {
+  grid-column: 1 / -1;
+}
+
+.painel--hierarquia-posicao .cartao-conta--principal .cartao-conta__saldo {
+  font-size: 2.5rem;
+  font-size: clamp(2.25rem, 7cqi, 3.25rem);
+}
+
+/* Painéis estreitos: o principal vai para a linha inteira */
+@container painel (max-width: 560px) {
+  .painel--hierarquia .grade-cartoes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .painel--hierarquia .cartao-conta--principal {
+    grid-column: 1 / -1;
+    padding: 1.5rem;
+  }
+
+  .painel--hierarquia .cartao-conta--principal .cartao-conta__saldo {
+    font-size: clamp(1.9rem, 10cqi, 2.5rem);
+  }
+}
+
+@container painel (max-width: 360px) {
+  .painel--hierarquia .grade-cartoes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .painel--animado .cartao-conta,
+  .painel--animado .resumo-mes__bloco,
+  .painel--animado .cartao-conta__saldo,
+  .painel--animado .resumo-mes__valor {
+    transition: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   13. AJUSTES PARA TELAS PEQUENAS
+   -------------------------------------------------------------------------- */
+@media (max-width: 600px) {
+  .cabecalho {
+    padding: 1rem;
+  }
+
+  .navegacao {
+    gap: 0.5rem 1rem;
+  }
+
+  .conteudo-principal {
+    padding: 1.5rem 1rem;
+  }
+
+  .conteudo-principal--centralizado {
+    padding-top: 2rem;
+  }
+
+  .titulo-pagina {
+    font-size: 1.5rem;
+  }
 }

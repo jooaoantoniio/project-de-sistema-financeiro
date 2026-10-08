@@ -15,6 +15,7 @@
       <a class="navegacao__link navegacao__link--ativo" href="dashboard.html">Dashboard</a>
       <a class="navegacao__link" href="transacoes.html">Transações</a>
       <a class="navegacao__link" href="nova-transacao.html">Nova Transação</a>
+      <a class="navegacao__link" href="descoberta-guiada.html">Descoberta Guiada</a>
     </nav>
 
     <div class="cabecalho__usuario">
@@ -26,14 +27,32 @@
     </div>
   </header>
 
-  <main class="conteudo-principal">
-    <h1 class="titulo-pagina">Meu Painel</h1>
+  <main class="conteudo-principal painel" id="painel">
+    <div class="titulo-linha">
+      <h1 class="titulo-pagina">Meu Painel</h1>
+      <a class="link-atividade" href="descoberta-guiada.html">
+        <span class="link-atividade__icone" aria-hidden="true">✦</span>
+        Descoberta Guiada
+      </a>
+    </div>
+
+    <div class="aviso-painel" id="aviso-painel" hidden>
+      <p class="aviso-painel__texto" id="aviso-painel-texto">
+        Você está vendo o painel depois do prompt aplicado na Descoberta Guiada.
+      </p>
+      <div class="aviso-painel__acoes">
+        <button class="botao botao--secundario" type="button" id="alternar-painel" aria-pressed="false">
+          Ver antes
+        </button>
+        <a href="descoberta-guiada.html">Voltar à atividade</a>
+      </div>
+    </div>
 
     <section class="secao">
       <h2 class="secao__titulo">Saldos</h2>
       <div class="grade-cartoes">
 
-        <div class="cartao-conta">
+        <div class="cartao-conta cartao-conta--principal">
           <p class="cartao-conta__nome">Conta Corrente</p>
           <p class="cartao-conta__saldo">R$ 3.842,17</p>
         </div>
@@ -88,5 +107,7 @@
     <p>&copy; 2026 Meu Financeiro. Todos os direitos reservados.</p>
   </footer>
 
+  <script src="estado-atividade.js"></script>
+  <script src="dashboard.js"></script>
 </body>
 </html>
