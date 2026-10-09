@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <main class="calculadora">
+    <output class="calculadora__visor" id="visor">0</output>
+
+    <div class="calculadora__teclas">
+      <button class="tecla tecla--funcao" data-acao="limpar">AC</button>
+      <button class="tecla tecla--funcao" data-acao="inverter">+/-</button>
+      <button class="tecla tecla--funcao" data-acao="percentual">%</button>
+      <button class="tecla tecla--operador" data-operador="/">&divide;</button>
+
+      <button class="tecla" data-numero="7">7</button>
+      <button class="tecla" data-numero="8">8</button>
+      <button class="tecla" data-numero="9">9</button>
+      <button class="tecla tecla--operador" data-operador="*">&times;</button>
+
+      <button class="tecla" data-numero="4">4</button>
+      <button class="tecla" data-numero="5">5</button>
+      <button class="tecla" data-numero="6">6</button>
+      <button class="tecla tecla--operador" data-operador="-">&minus;</button>
+
+      <button class="tecla" data-numero="1">1</button>
+      <button class="tecla" data-numero="2">2</button>
+      <button class="tecla" data-numero="3">3</button>
+      <button class="tecla tecla--mais" data-operador="+">+</button>
+
+      <button class="tecla tecla--zero" data-numero="0">0</button>
+      <button class="tecla" data-acao="decimal">,</button>
+      <button class="tecla tecla--mais" data-acao="igual">=</button>
+    </div>
+  </main>
+
+  <script>
+    const visor = document.getElementById('visor');
+
+    let atual = '0';
+    let anterior = null;
+    let operador = null;
+    let novoNumero = true;
+
+    function calcular(a, b, op) {
+      switch (op) {
+        case '+': return a + b;
+        case '-': return a - b;
+        case '*': return a * b;
+        case '/': return b === 0 ? NaN : a / b;
+      }
+    }
+
+    function formatar(valor) {
+      if (!Number.isFinite(valor)) return 'Erro';
+      return String(Number(valor.toFixed(10)));
+    }
+
+    function atualizarVisor() {
+      visor.textContent = atual.replace('.', ',');
+    }
+
+    function inserirNumero(digito) {
+      if (novoNumero) {
+        atual = digito;
+        novoNumero = false;
+      } else if (atual === '0') {
+        atual = digito;
+      } else {
+        atual += digito;
+      }
+      atualizarVisor();
+    }
+
+    function inserirDecimal() {
+      if (novoNumero) {
+        atual = '0.';
+        novoNumero = false;
+      } else if (!atual.includes('.')) {
+        atual += '.';
+      }
+      atualizarVisor();
+    }
+
+    function escolherOperador(op) {
+      if (operador && !novoNumero) {
+        anterior = calcular(anterior, parseFloat(atual), operador);
+        atual = formatar(anterior);
+        anterior = parseFloat(atual);
+      } else {
+        anterior = parseFloat(atual);
+      }
+      operador = op;
+      novoNumero = true;
+      atualizarVisor();
+    }
+
+    function igual() {
+      if (!operador) return;
+      const resultado = calcular(anterior, parseFloat(atual), operador);
+      atual = formatar(resultado);
+      anterior = null;
+      operador = null;
+      novoNumero = true;
+      atualizarVisor();
+    }
+
+    function limpar() {
+      atual = '0';
+      anterior = null;
+      operador = null;
+      novoNumero = true;
+      atualizarVisor();
+    }
+
+    function inverter() {
+      if (atual === '0' || atual === 'Erro') return;
+      atual = atual.startsWith('-') ? atual.slice(1) : '-' + atual;
+      atualizarVisor();
+    }
+
+    function percentual() {
+      if (atual === 'Erro') return;
+      atual = formatar(parseFloat(atual) / 100);
+      novoNumero = true;
+      atualizarVisor();
+    }
+
+    document.querySelector('.calculadora__teclas').addEventListener('click', (evento) => {
+      const tecla = evento.target.closest('button');
+      if (!tecla) return;
+
+      if (tecla.dataset.numero !== undefined) inserirNumero(tecla.dataset.numero);
+      else if (tecla.dataset.operador) escolherOperador(tecla.dataset.operador);
+      else {
+        const acoes = {
+          decimal: inserirDecimal,
+          igual,
+          limpar,
+          inverter,
+          percentual
+        };
+        acoes[tecla.dataset.acao]();
+      }
+    });
+  </script>
+</body>
+</html>

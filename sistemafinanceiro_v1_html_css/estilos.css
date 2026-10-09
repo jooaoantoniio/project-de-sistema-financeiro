@@ -89,9 +89,10 @@ textarea:focus-visible {
   color: #ffffff;
   padding: 1rem 2rem;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 1rem;
 }
 

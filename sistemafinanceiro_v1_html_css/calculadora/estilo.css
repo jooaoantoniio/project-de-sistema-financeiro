@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+
+.calculadora {
+  width: 360px;
+  padding: 1rem;
+  background-color: #000000;
+  border: 8px solid #3a3a3c;
+  border-radius: 32px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+
+.calculadora__visor {
+  display: block;
+  min-height: 110px;
+  padding: 0 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 5rem;
+  font-weight: 300;
+  line-height: 1;
+  color: #ffffff;
+  text-align: right;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.calculadora__teclas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.tecla {
+  height: 72px;
+  border: none;
+  border-radius: 50%;
+  background-color: #333336;
+  color: #ffffff;
+  font-size: 1.85rem;
+  cursor: pointer;
+  transition: filter 0.15s ease, transform 0.05s ease;
+}
+
+.tecla:hover {
+  filter: brightness(1.2);
+}
+
+.tecla:active {
+  transform: scale(0.94);
+}
+
+.tecla:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 2px;
+}
+
+.tecla--funcao {
+  background-color: #ff453a;
+  color: #ffffff;
+}
+
+.tecla--operador {
+  background-color: #ff9f0a;
+  color: #ffffff;
+}
+
+.tecla--mais {
+  background-color: #30b257;
+  color: #ffffff;
+}
+
+.tecla--zero {
+  grid-column: span 2;
+  border-radius: 36px;
+  text-align: left;
+  padding-left: 28px;
+}
